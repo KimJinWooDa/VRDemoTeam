@@ -24,6 +24,7 @@ using UnityEngine.Assertions;
 
 namespace Oculus.Interaction
 {
+  
     public class Grabbable : PointableElement, IGrabbable
     {
         [SerializeField, Interface(typeof(ITransformer)), Optional]
@@ -53,7 +54,8 @@ namespace Oculus.Interaction
         private ITransformer _activeTransformer = null;
         private ITransformer OneGrabTransformer;
         private ITransformer TwoGrabTransformer;
-
+        
+        
         protected override void Awake()
         {
             base.Awake();
@@ -152,8 +154,14 @@ namespace Oculus.Interaction
             {
                 return;
             }
-
+            
             _activeTransformer.BeginTransform();
+
+            if (this.transform.CompareTag("HAMMER"))
+            {
+                var hammer = transform.gameObject;
+                hammer.SendMessage("Init");
+            }
         }
 
         private void UpdateTransform()

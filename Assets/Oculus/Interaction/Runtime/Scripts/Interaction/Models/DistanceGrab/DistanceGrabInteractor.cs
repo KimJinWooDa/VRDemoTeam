@@ -133,6 +133,8 @@ namespace Oculus.Interaction
             _movement = interactable.GenerateMovement(_grabTarget.GetPose());
             base.InteractableSelected(interactable);
             interactable.WhenPointerEventRaised += HandleOtherPointerEventRaised;
+
+            
         }
 
         protected override void InteractableUnselected(DistanceGrabInteractable interactable)
